@@ -12,7 +12,7 @@ $ docker run --env-file=../env.txt -it mqfellow/cli:1.0.0 create-simple-vpc-publ
 
 cat env.txt
 
-AWS_DEFAULT_REGION=us-east-2
+AWS_DEFAULT_REGION=us-west-2
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 
