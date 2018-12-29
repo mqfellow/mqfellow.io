@@ -1,7 +1,7 @@
 ### github cleanup credentials
 
 ```
-
+git config --global --unset credential.helper
 ```
 
 ### Cleanup docker images and container
