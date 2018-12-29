@@ -1,7 +1,10 @@
 # cli
-Docker MQ CLI
-Reset the login/pass - git config --global --unset credential.helper
-Source Code - https://github.com/mqfellow/cli
+
+* Docker MQ CLI
+
+* Reset the login/pass - git config --global --unset credential.helper
+
+* Source Code - https://github.com/mqfellow/cli
 
 
 ### Using cli:1.0.2
