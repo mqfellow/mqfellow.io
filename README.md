@@ -8,7 +8,7 @@ MQFellow project shows different IBM MQ installation scenario from basic to adva
 
 3. [simple-queuemanager](https://github.com/mqfellow/mqfellow-docs/blob/master/simple-queuemanager-userdata.txt) - Simple QueueManager. Use the userdata from this link on the mq-install.sh script
 
-```
+```markdown
 $ sh mq-install.sh
 
 ssh -i "mqfellow-us-west-2.pem" ec2-user@IP
