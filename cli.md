@@ -4,7 +4,7 @@
 
 * Reset the login/pass - git config --global --unset credential.helper
 
-* Source Code - https://github.com/mqfellow/cli
+* Source Code - [https://github.com/mqfellow/cli](https://github.com/mqfellow/cli)
 
 
 ### Using cli:1.0.2
