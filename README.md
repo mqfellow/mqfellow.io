@@ -40,7 +40,7 @@ $ sh mq-delete.sh
 
 4. [simple-queuemanager-userdata-using-mq-ami](https://github.com/mqfellow/mqfellow-docs/blob/master/simple-queuemanager-userdata-using-mq-ami.txt) - It uses AMI that has IBM MQ binary already installed. The total startup time is 2 minutes.
 
-5. [distributed-qmanager](https://github.com/mqfellow/distributed-qmanager) - Distributed Queue Manager scenario that uses Remote Queue, Sender, Receiver and XMITQ
+5. [distributed-qmanager](./distributed-qmanager) - Distributed Queue Manager scenario that uses Remote Queue, Sender, Receiver and XMITQ
 
 6. [multi-instance-qmanager](https://github.com/mqfellow/multi-instance-qmanager) - Manual installation
 
