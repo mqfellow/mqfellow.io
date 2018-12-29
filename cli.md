@@ -65,6 +65,7 @@ MF_INSTANCE_TYPE=
 MF_PUBLIC_IP1=
 MF_IAM_ROLE=
 MF_AVAILABILITY_ZONE=us-west-2a
+MF_USER_DATA_LOCATION=file:///mf/cli/userdata/simple-vpc-public-subnet-userdata.txt
 
 $ docker run --env-file=../basic-env-west.txt -it mqfellow/cli:1.0.1 create-vpc-public-subnet
 $ docker run --env-file=../basic-env-west.txt -it mqfellow/cli:1.0.1 describe-vpc-public-subnet
