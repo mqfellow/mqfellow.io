@@ -4,6 +4,21 @@ Reset the login/pass - git config --global --unset credential.helper
 
 ### Using cli:1.0.1
 
+
+#### Distributed MQ
+
+To use the cli 1.0.1, ensure the following:
+* an AWS EIP
+* AWS S3 bucket (mqfellow-us-east-1) with the following folder names: mq-certs, mq-installer, mq-output
+* AWS IAM Role
+
+```
+$ docker run --env-file=../dqmanager-env-west.txt -it mqfellow/cli:1.0.1 create-vpc-public-subnet
+$ docker run --env-file=../dqmanager-env-east.txt -it mqfellow/cli:1.0.1 create-vpc-public-subnet
+```
+
+#### Basic MQ
+
 To use the cli 1.0.1, ensure the following:
 * an AWS EIP
 * AWS S3 bucket (mqfellow-us-east-1) with the following folder names: mq-certs, mq-installer, mq-output
