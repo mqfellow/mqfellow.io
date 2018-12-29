@@ -2,7 +2,7 @@
 
 MQFellow project shows different IBM MQ installation scenario from basic to advance.
 
-1. [install-mq-aws-cli](https://github.com/mqfellow/install-mq-aws-cli) - Manual installation of IBM MQ using S3 as the binary repository. It uses AWS CLI.
+1. [install-mq-aws-cli](./install-mq-aws-cli) - Manual installation of IBM MQ using S3 as the binary repository. It uses AWS CLI.
 
 2. [auto-mq-install-vpc-public-subnet](https://github.com/mqfellow/auto-mq-install-vpc-public-subnet) - Installing IBM MQ v9 using shell script. It requires the following as the input. [mq-install.sh](https://github.com/mqfellow/auto-mq-install-vpc-public-subnet/blob/master/mq-install.sh) [mq-delete.sh](https://github.com/mqfellow/auto-mq-install-vpc-public-subnet/blob/master/mq-delete.sh) 
 
