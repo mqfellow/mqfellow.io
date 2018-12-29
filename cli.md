@@ -13,8 +13,38 @@ To use the cli 1.0.1, ensure the following:
 * AWS IAM Role
 
 ```
+$ cat dqmanager-env-west.txt
+
+AWS_DEFAULT_REGION=us-west-2
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+MF_ID=dqmgr-mq-dec27-west
+MF_KEYPAIR_NAME=
+MF_AMI_ID=
+MF_INSTANCE_TYPE=t2.large
+MF_PUBLIC_IP1=
+MF_IAM_ROLE=MQFELLOW-S3FullAccess
+MF_AVAILABILITY_ZONE=us-west-2a
+MF_USER_DATA_LOCATION=file:///mf/cli/userdata/dqmgr-userdata-remote-self-signed-cert.txt
+
 $ docker run --env-file=../dqmanager-env-west.txt -it mqfellow/cli:1.0.1 create-vpc-public-subnet
+
+$ cat dqmanager-env-east.txt
+
+AWS_DEFAULT_REGION=us-east-1
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+MF_ID=dqmgr-mq-dec27-east
+MF_KEYPAIR_NAME=blockchain
+MF_AMI_ID=
+MF_INSTANCE_TYPE=t2.large
+MF_PUBLIC_IP1=
+MF_IAM_ROLE=
+MF_AVAILABILITY_ZONE=us-east-1a
+MF_USER_DATA_LOCATION=file:///mf/cli/userdata/dqmgr-userdata-local-self-signed-cert.txt
+
 $ docker run --env-file=../dqmanager-env-east.txt -it mqfellow/cli:1.0.1 create-vpc-public-subnet
+
 ```
 
 #### Basic MQ
