@@ -2,9 +2,9 @@
 
 MQFellow project shows different IBM MQ installation scenario from basic to advance.
 
-1. [install-mq-aws-cli](./install-mq-aws-cli) - Manual installation of IBM MQ using S3 as the binary repository. It uses AWS CLI.
+1. [install-mq-aws-cli](https://mqfellow.io/install-mq-aws-cli) - Manual installation of IBM MQ using S3 as the binary repository. It uses AWS CLI.
 
-2. [auto-mq-install-vpc-public-subnet](./auto-mq-install-vpc-public-subnet) - Installing IBM MQ v9 using shell script. It requires the following as the input. [mq-install.sh](https://github.com/mqfellow/auto-mq-install-vpc-public-subnet/blob/master/mq-install.sh) [mq-delete.sh](https://github.com/mqfellow/auto-mq-install-vpc-public-subnet/blob/master/mq-delete.sh) 
+2. [auto-mq-install-vpc-public-subnet](https://mqfellow.io/auto-mq-install-vpc-public-subnet) - Installing IBM MQ v9 using shell script. It requires the following as the input. [mq-install.sh](https://github.com/mqfellow/auto-mq-install-vpc-public-subnet/blob/master/mq-install.sh) [mq-delete.sh](https://github.com/mqfellow/auto-mq-install-vpc-public-subnet/blob/master/mq-delete.sh) 
 
 3. [simple-queuemanager](https://github.com/mqfellow/mqfellow-docs/blob/master/simple-queuemanager-userdata.txt) - Simple QueueManager. Use the userdata from this link on the mq-install.sh script
 
@@ -38,15 +38,15 @@ $ sh mq-delete.sh
 
 ```
 
-4. [simple-queuemanager-userdata-using-mq-ami](./simple-queuemanager-userdata-using-mq-ami) - It uses AMI that has IBM MQ binary already installed. The total startup time is 2 minutes.
+4. [simple-queuemanager-userdata-using-mq-ami](https://mqfellow.io/simple-queuemanager-userdata-using-mq-ami) - It uses AMI that has IBM MQ binary already installed. The total startup time is 2 minutes.
 
-5. [distributed-qmanager](./distributed-qmanager) - Distributed Queue Manager scenario that uses Remote Queue, Sender, Receiver and XMITQ
+5. [distributed-qmanager](https://mqfellow.io/distributed-qmanager) - Distributed Queue Manager scenario that uses Remote Queue, Sender, Receiver and XMITQ
 
 6. [multi-instance-qmanager](https://mqfellow.io/multi-instance-qmanager) - Manual installation
 
 7. Cluster Queues
 
-8. [mqfellow/cli](./cli) - MQFellow CLI using Docker 
+8. [mqfellow/cli](https://mqfellow.io/cli) - MQFellow CLI using Docker 
 
 
 
