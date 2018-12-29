@@ -42,7 +42,7 @@ $ sh mq-delete.sh
 
 5. [distributed-qmanager](./distributed-qmanager) - Distributed Queue Manager scenario that uses Remote Queue, Sender, Receiver and XMITQ
 
-6. [multi-instance-qmanager](./multi-instance-qmanager) - Manual installation
+6. [multi-instance-qmanager](https://mqfellow.io/multi-instance-qmanager) - Manual installation
 
 7. Cluster Queues
 
