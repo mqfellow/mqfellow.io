@@ -46,7 +46,7 @@ $ sh mq-delete.sh
 
 7. Cluster Queues
 
-8. MQFellow CLI using Docker 
+8. [mqfellow/cli](https://github.com/mqfellow/cli) - MQFellow CLI using Docker 
 
 
 
