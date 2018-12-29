@@ -3,8 +3,34 @@ Docker MQ CLI
 Reset the login/pass - git config --global --unset credential.helper
 Source Code - https://github.com/mqfellow/cli
 
-### Using cli:1.0.1
 
+### Using cli:1.0.2
+
+Added MF_S3_BUCKET_NAME environment variable to elimitate hardcoded S3 bucket name.
+
+```
+
+$ cat dqmanager-env-west.txt
+
+AWS_DEFAULT_REGION=us-west-2
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+MF_ID=dqmgr-mq-dec27-west
+MF_KEYPAIR_NAME=
+MF_AMI_ID=
+MF_INSTANCE_TYPE=t2.large
+MF_PUBLIC_IP1=
+MF_IAM_ROLE=MQFELLOW-S3FullAccess
+MF_AVAILABILITY_ZONE=us-west-2a
+MF_USER_DATA_LOCATION=file:///mf/cli/userdata/dqmgr-userdata-remote-self-signed-cert.txt
+
+$ docker run --env-file=../dqmanager-env-west.txt -it mqfellow/cli:1.0.2 create-vpc-public-subnet
+$ docker run --env-file=../dqmanager-env-east.txt -it mqfellow/cli:1.0.2 create-vpc-public-subnet
+
+```
+
+
+### Using cli:1.0.1
 
 #### Distributed MQ
 
