@@ -2,7 +2,7 @@
 
 ### Maintenance 
 
-[Maintainance](https://mqfellow.io/maintenance) - cleanup docker images, containers and github credentials
+[Maintenance](https://mqfellow.io/maintenance) - cleanup docker images, containers and github credentials
 
 ### MQFellow project shows different IBM MQ installation scenario from basic to advance.
 
