@@ -6,7 +6,11 @@
 
 * Source Code - [https://github.com/mqfellow/cli](https://github.com/mqfellow/cli)
 
-### Using cli:1.0.3 to generate CSR and receive certificate
+* Version 1.0.2 and prior uses Alpine linux as base image
+
+* Version 1.0.3 and later uses Ubuntu linux as base image. It comes with IBM MQ Binary - Developer version.
+
+### Using cli:1.0.3 to generate CSR and receive certificate using IBM MQ binary.
 
 * [CSR request and receive certificate](https://mqfellow.io/cli/certreq) 
 
