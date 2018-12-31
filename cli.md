@@ -6,6 +6,9 @@
 
 * Source Code - [https://github.com/mqfellow/cli](https://github.com/mqfellow/cli)
 
+### Using cli:1.0.3 to generate CSR and receive certificate
+
+* [CSR request and receive certificate](https://mqfellow.io/cli/certreq) 
 
 ### Using cli:1.0.2
 
