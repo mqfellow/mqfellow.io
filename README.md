@@ -52,7 +52,6 @@ $ sh mq-delete.sh
 
 8. [mqfellow/cli](https://mqfellow.io/cli) - MQFellow CLI using Docker 
 
-* [CSR request and receive certificate](https://mqfellow.io/cli/certreq) 
 
 
 
