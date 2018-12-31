@@ -1,3 +1,11 @@
+### Disk space Cleanup
+
+```
+du / | awk '+$1 >= 10000000 {print}'
+
+```
+
+
 ### github cleanup credentials
 
 ```
