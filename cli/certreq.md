@@ -12,7 +12,7 @@ cat ../mqfelloweast_host.crt | docker run \
 -e AWS_DEFAULT_REGION \
 -e AWS_ACCESS_KEY_ID \
 -e AWS_SECRET_ACCESS_KEY \
--i mqfellow/cli:1.0.3 certrec
+-i mqfellow/cli:1.0.4 certrec
 
 ```
 
@@ -33,7 +33,7 @@ docker run \
 -e AWS_DEFAULT_REGION \
 -e AWS_ACCESS_KEY_ID \
 -e AWS_SECRET_ACCESS_KEY \
--it mqfellow/cli:1.0.3 certreq
+-it mqfellow/cli:1.0.4 certreq
 
 ```
 
