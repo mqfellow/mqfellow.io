@@ -1,4 +1,4 @@
-## Certreq
+## Certrec
 
 Receives the certificae and adds it to key.db. Uploads the updated files to S3
 
