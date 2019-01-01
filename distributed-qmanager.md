@@ -3,6 +3,8 @@ Distributed Queue Manager scenario that uses Remote Queue, Sender, Receiver and 
 
 ![Distributed Queue Manager](https://www.ibm.com/support/knowledgecenter/SSFKSJ_9.0.0/com.ibm.mq.sce.doc/q014240a.gif)
 
+Source: https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.0.0/com.ibm.mq.sce.doc/q014240_.htm
+
 ### Non-ssl EAST / WEST Installation
 
 Use [mq-install-east.sh](https://github.com/mqfellow/distributed-qmanager/blob/master/mq-install-east.sh) as the pattern for creating the stack in AWS East region. Review the corresponding userdata file. Ensure that your AWS credential specifies the region.
