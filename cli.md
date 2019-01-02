@@ -1,146 +1,101 @@
 # cli
 
-* Docker MQ CLI
+Latest CLI commands that can be used.
 
-* Reset the login/pass - git config --global --unset credential.helper
+## Create a CSR request
 
-* Source Code - [https://github.com/mqfellow/cli](https://github.com/mqfellow/cli)
+This command is used to generate CSR for commercially signed certificate.
 
-* Version 1.0.3 and prior uses Alpine linux as base image
-
-* Version 1.0.4 and later uses Ubuntu linux as base image. It comes with IBM MQ Binary - Developer version.
-
-### Using cli:1.0.4 to generate CSR and receive certificate using IBM MQ binary.
-
-* [CSR request and receive certificate](https://mqfellow.io/cli/certreq) 
-
-### Using cli:1.0.2
-
-Added MF_S3_BUCKET_NAME environment variable to elimitate hardcoded S3 bucket name.
+```
+docker run \
+-e "MF_CERTREQ_PASSWD=12345" \
+-e "MF_CERTREQ_LABEL=ibmwebspheremqqmr01" \
+-e "MF_DN=CN=mqfellowwest.host,O=MQFellow,OU=IT,L=Springfield,ST=Illinois,C=US" \
+-e "MF_CERTREQ_SIZE=2048" \
+-e "MF_CERTREQ_PREFIX=jan1" \
+-e "MF_CERTREQ_S3_BUCKET=mqfellow-us-east-1" \
+-e "AWS_DEFAULT_REGION=us-east-1" \
+-e AWS_ACCESS_KEY_ID \
+-e AWS_SECRET_ACCESS_KEY \
+-it mqfellow/cli:1.0.5 certreq
 
 ```
 
-$ cat dqmanager-env-west.txt
+## Receive the commercially signed certificate
 
-AWS_DEFAULT_REGION=us-west-2
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-MF_ID=dqmgr-mq-dec27-west
-MF_KEYPAIR_NAME=
-MF_AMI_ID=
-MF_INSTANCE_TYPE=t2.large
-MF_PUBLIC_IP1=
-MF_IAM_ROLE=MQFELLOW-S3FullAccess
-MF_AVAILABILITY_ZONE=us-west-2a
-MF_USER_DATA_LOCATION=file:///mf/cli/userdata/dqmgr-userdata-remote-self-signed-cert.txt
+Once the certificate is received, import the certificate using the sample command below.
 
-$ docker run --env-file=../dqmanager-env-west.txt -it mqfellow/cli:1.0.2 create-vpc-public-subnet
-$ docker run --env-file=../dqmanager-env-east.txt -it mqfellow/cli:1.0.2 create-vpc-public-subnet
+```
+cat ../mqfellowwest_host.crt | docker run \
+-e "MF_CERTREQ_PREFIX=jan1" \
+-e "MF_CERTREQ_LABEL=ibmwebspheremqqmr01" \
+-e "MF_CERTREQ_S3_BUCKET=mqfellow-us-east-1" \
+-e "AWS_DEFAULT_REGION=us-east-1" \
+-e AWS_ACCESS_KEY_ID \
+-e AWS_SECRET_ACCESS_KEY \
+-i mqfellow/cli:1.0.5 certrec
+```
+
+## Create VPC with public-subnet
+
+Easilly create a new VPC with public subnet. It uses the commericially signed certificate.
+
+```
+docker run \
+-e "MF_ID=dqmgr-mq-jan1-west" \
+-e "MF_KEYPAIR_NAME=mqfellow-us-west-2" \
+-e "MF_AMI_ID=ami-01447eb4f920602e3" \
+-e "MF_INSTANCE_TYPE=t2.large" \
+-e "MF_PUBLIC_IP1=52.42.174.228" \
+-e "MF_IAM_ROLE=MQFELLOW-S3FullAccess" \
+-e "MF_AVAILABILITY_ZONE=us-west-2a" \
+-e "MF_S3_BUCKET_NAME=mqfellow-us-east-1" \
+-e "MF_USER_DATA_LOCATION=file:///mf/cli/userdata/dqmgr-qmr01-commercially-signed-cert.txt" \
+-e "MF_MQ_LISTENER_PORT1=9000" \
+-e "MF_CERT_PREFIX=jan1" \
+-e "MF_CERT_LABEL=ibmwebspheremqqmr01" \
+-e "MF_MQ_REMOTE_IP1=52.86.146.171" \
+-e "MF_MQ_REMOTE_PORT1=1414" \
+-e "AWS_DEFAULT_REGION=us-west-2" \
+-e AWS_ACCESS_KEY_ID \
+-e AWS_SECRET_ACCESS_KEY \
+-i mqfellow/cli:1.0.5 create-vpc-public-subnet
+
+```
+## Describe VPC values
+
+Show the values that has been saved in s3 for the selected MF_ID
 
 ```
 
-
-### Using cli:1.0.1
-
-#### Distributed MQ
-
-To use the cli 1.0.1, ensure the following:
-* an AWS EIP
-* AWS S3 bucket (mqfellow-us-east-1) with the following folder names: mq-certs, mq-installer, mq-output
-* AWS IAM Role
-
-```
-$ cat dqmanager-env-west.txt
-
-AWS_DEFAULT_REGION=us-west-2
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-MF_ID=dqmgr-mq-dec27-west
-MF_KEYPAIR_NAME=
-MF_AMI_ID=
-MF_INSTANCE_TYPE=t2.large
-MF_PUBLIC_IP1=
-MF_IAM_ROLE=MQFELLOW-S3FullAccess
-MF_AVAILABILITY_ZONE=us-west-2a
-MF_USER_DATA_LOCATION=file:///mf/cli/userdata/dqmgr-userdata-remote-self-signed-cert.txt
-
-$ docker run --env-file=../dqmanager-env-west.txt -it mqfellow/cli:1.0.1 create-vpc-public-subnet
-
-$ cat dqmanager-env-east.txt
-
-AWS_DEFAULT_REGION=us-east-1
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-MF_ID=dqmgr-mq-dec27-east
-MF_KEYPAIR_NAME=blockchain
-MF_AMI_ID=
-MF_INSTANCE_TYPE=t2.large
-MF_PUBLIC_IP1=
-MF_IAM_ROLE=
-MF_AVAILABILITY_ZONE=us-east-1a
-MF_USER_DATA_LOCATION=file:///mf/cli/userdata/dqmgr-userdata-local-self-signed-cert.txt
-
-$ docker run --env-file=../dqmanager-env-east.txt -it mqfellow/cli:1.0.1 create-vpc-public-subnet
+docker run \
+-e "MF_ID=dqmgr-mq-jan1-west" \
+-e "MF_S3_BUCKET_NAME=mqfellow-us-east-1" \
+-e "AWS_DEFAULT_REGION=us-west-2" \
+-e AWS_ACCESS_KEY_ID \
+-e AWS_SECRET_ACCESS_KEY \
+-i mqfellow/cli:1.0.5 describe-vpc-public-subnet
 
 ```
 
-#### Basic MQ
+## Delete the VPC
 
-To use the cli 1.0.1, ensure the following:
-* an AWS EIP
-* AWS S3 bucket (mqfellow-us-east-1) with the following folder names: mq-certs, mq-installer, mq-output
-* AWS IAM Role
+It will delete the following created aws resources: security group, subnet group, routing table, internet gateway and vpc.
 
 ```
-cat ../basic-env-west.txt
-AWS_DEFAULT_REGION=us-west-2
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-MF_KEYPAIR_NAME=
-MF_AMI_ID=
-MF_INSTANCE_TYPE=
-MF_PUBLIC_IP1=
-MF_IAM_ROLE=
-MF_AVAILABILITY_ZONE=us-west-2a
-MF_USER_DATA_LOCATION=file:///mf/cli/userdata/simple-vpc-public-subnet-userdata.txt
-
-$ docker run --env-file=../basic-env-west.txt -it mqfellow/cli:1.0.1 create-vpc-public-subnet
-$ docker run --env-file=../basic-env-west.txt -it mqfellow/cli:1.0.1 describe-vpc-public-subnet
-$ docker run --env-file=../basic-env-west.txt -it mqfellow/cli:1.0.1 delete-vpc-public-subnet
-
+docker run \
+-e "MF_ID=dqmgr-mq-jan1-west" \
+-e "MF_S3_BUCKET_NAME=mqfellow-us-east-1" \
+-e "AWS_DEFAULT_REGION=us-west-2" \
+-e AWS_ACCESS_KEY_ID \
+-e AWS_SECRET_ACCESS_KEY \
+-i mqfellow/cli:1.0.5 delete-vpc-public-subnet
 ```
 
-### Simple VPC with public subnet cli:1.0.0
+## Use case
 
-To use the cli 1.0.1, create the following:
-* an AWS EIP
-* AWS S3 bucket (mqfellow-us-east-1) with the following folder names: mq-certs, mq-installer, mq-output
-* AWS IAM Role
+* [Automatic creaton of Distributed Queue Manager Setup](https://mqfellow.io/distributed/distributed-auto-signed-ssl)
 
 
-```
-
-Create stack
-$ docker run --env-file=../env.txt -it mqfellow/cli:1.0.0 create-simple-vpc-public-subnet dec27
-
-cat env.txt
-AWS_DEFAULT_REGION=us-west-2
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-MF_KEYPAIR_NAME=
-MF_AMI_ID=
-MF_INSTANCE_TYPE=
-MF_PUBLIC_IP1=
-MF_IAM_ROLE=
-MF_AVAILABILITY_ZONE=us-west-2a
-
-Describe stack
-$ docker run --env-file=../env.txt -it mqfellow/cli:1.0.0 describe-simple-vpc-public-subnet dec27 
-
-Delete stack
-$ docker run --env-file=../env.txt -it mqfellow/cli:1.0.0 create-simple-vpc-public-subnet dec27
-
-
-```
 
 
