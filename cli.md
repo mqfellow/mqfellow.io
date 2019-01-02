@@ -96,6 +96,10 @@ docker run \
 
 * [Automatic creaton of Distributed Queue Manager Setup](https://mqfellow.io/distributed/distributed-auto-signed-ssl)
 
+## Prior notes
+
+* https://github.com/mqfellow/mqfellow.io/blob/7334038326356859482e3250c33a12f8cd256cff/cli.md
+
 
 
 
