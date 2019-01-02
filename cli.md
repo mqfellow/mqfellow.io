@@ -98,7 +98,7 @@ docker run \
 
 ## Prior notes
 
-* https://github.com/mqfellow/mqfellow.io/blob/7334038326356859482e3250c33a12f8cd256cff/cli.md
+* [Dec-31-2019](https://github.com/mqfellow/mqfellow.io/blob/7334038326356859482e3250c33a12f8cd256cff/cli.md)
 
 
 
