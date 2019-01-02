@@ -94,7 +94,7 @@ docker run \
 
 ## Use case
 
-* [Automatic creaton of Distributed Queue Manager Setup](https://mqfellow.io/distributed/distributed-auto-signed-ssl)
+* [Automatic creation of Distributed Queue Manager Setup](https://mqfellow.io/distributed/distributed-auto-signed-ssl)
 
 ## Prior notes
 
