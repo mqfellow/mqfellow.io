@@ -3,6 +3,7 @@
 * IAM role is created with full access to S3
 * Keypair is created for east and west region
 * S3 bucket is created in either east or west region
+* Export the AWS credentials in your terminal, export AWS_ACCESS_KEY_ID=your-values export AWS_SECRET_ACCESS_KEY=your-values
 
 # QM01 
 
@@ -47,6 +48,7 @@ cat ../mqfelloweast_host.crt | docker run \
 
 Replace the sample values accordingly.
 
+```
 docker run \
 -e "MF_ID=dqmgr-mq-jan1-east" \
 -e "MF_KEYPAIR_NAME=blockchain" \
@@ -66,6 +68,7 @@ docker run \
 -e AWS_ACCESS_KEY_ID \
 -e AWS_SECRET_ACCESS_KEY \
 -i mqfellow/cli:1.0.5 create-vpc-public-subnet
+```
 
 ### Double check if the stack is created
 
@@ -93,10 +96,9 @@ docker run \
 
 # QMR01
 
-Stack that can be ran on AWS us-east-1
+Stack that can be ran on AWS us-west-2. 
 
 ```
-
 docker run \
 -e "MF_ID=dqmgr-mq-jan1-west" \
 -e "MF_S3_BUCKET_NAME=mqfellow-us-east-1" \
@@ -153,6 +155,5 @@ docker run \
 -e AWS_ACCESS_KEY_ID \
 -e AWS_SECRET_ACCESS_KEY \
 -it mqfellow/cli:1.0.5 certreq
-
 
 ```
