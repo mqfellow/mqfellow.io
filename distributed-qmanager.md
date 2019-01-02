@@ -29,9 +29,18 @@ Generate the self-signed ssl for qm01 and qmr01 and upload it to s3. This is the
 
 The MQ servers should start with self-signed SSL enabled for both sender and receiver configuration.
 
+### Commercially-signed Certificate SSL Setup
+
+#### Manual Installation
+
+* [distributed-manual-signed-ssl](https://mqfellow.io/distributed/distributed-manual-signed-ssl) 
+
+#### Automated Installation using mqfellow:cli
+
+* [distributed-auto-signed-ssl](https://mqfellow.io/distributed/distributed-auto-signed-ssl) 
+
 ### TODO
 
-* SSL-signed - https://www.youtube.com/watch?v=VHX_KGNc65o&list=PLpFOFgc5UfWE4pHHIweA8TGF-agIG42TT
 * Backup to S3
-* provision, rehydrate, destroy
+* provision, rehydrate, rollback, destroy
 
