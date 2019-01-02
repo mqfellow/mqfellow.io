@@ -1,3 +1,9 @@
+# Requirements
+
+* IAM role is created with full access to S3
+* Keypair is created for east and west region
+* S3 bucket is created in either east or west region
+
 # QM01 
 
 Stack that can be ran on AWS us-east-1
