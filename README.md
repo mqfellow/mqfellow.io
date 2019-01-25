@@ -56,7 +56,7 @@ $ sh mq-delete.sh
 
 8. [mqfellow/cli](https://mqfellow.io/cli) - MQFellow CLI using Docker 
 
-
+9. [Cluster](https://mqfellow.io/cluster) - MQ Cluster Setup - Full/Parial Repository
 
 
 
