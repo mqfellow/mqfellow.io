@@ -67,6 +67,9 @@ The mqsc for each instance has to be defined or port can be parametrized and the
 6. define listener for the channels.
 7. in clustering, channel will start automatically. start the listener manually.
 9. submit test data - 20 - to test load balancing from different qmgrs in cluster
+
+## Validation
+
 ```
 cd /opt/mqm/samp/bin
 ./amqsput Q1 A
@@ -98,12 +101,8 @@ message <17>
 (mq:9.0)mqm@da75c6c72bad:/opt/mqm/samp/bin$ echo "DIS QL(Q1) CURDEPTH" | runmqsc A | grep CURDEPTH
      1 : DIS QL(Q1) CURDEPTH
    CURDEPTH(0)   
-```
 
-10. Check other commands to validate.
-
-
-```
+Check other commands to validate.
 
 echo "DISPLAY CLUSQMGR(*) QMTYPE" | runmqsc A
 
