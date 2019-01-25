@@ -105,6 +105,7 @@ message <17>
 Check other commands to validate.
 
 echo "DISPLAY CLUSQMGR(*) QMTYPE" | runmqsc A
+echo "DISPLAY CHSTATUS(*)" | runmqsc A
 
 (mq:9.0)mqm@da75c6c72bad:/opt/mqm/samp/bin$ echo "DISPLAY CLUSQMGR(*) QMTYPE" | runmqsc A
 5724-H72 (C) Copyright IBM Corp. 1994, 2016.
