@@ -19,3 +19,8 @@ docker images -q | xargs docker rmi -f
 docker rmi $(docker ps -q) 
 
 ```
+### MAC Space Cleanup
+
+```
+http://osxdaily.com/2012/04/17/find-large-files-in-mac-os-x-search/
+```
