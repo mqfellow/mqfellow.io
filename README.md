@@ -1,6 +1,6 @@
 ## Welcome to MQFellow Pages
 
-### QM Ini
+### QM ini
 
 * ADOPTMCA ADOPTNEWMCA on QM.ini
 * http://www-01.ibm.com/support/docview.wss?uid=swg21080140
