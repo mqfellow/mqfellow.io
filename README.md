@@ -5,6 +5,15 @@
 * ADOPTMCA ADOPTNEWMCA on QM.ini
 * http://www-01.ibm.com/support/docview.wss?uid=swg21080140
 
+```
+echo 'SSL:' >> $DATA_PATH/qm.ini
+echo '  CDPCheckExtensions=NO' >> $DATA_PATH/qm.ini
+echo '  OCSPCheckExtensions=NO' >> $DATA_PATH/qm.ini
+echo '  OCSPAuthentication=OPTIONAL' >> $DATA_PATH/qm.ini
+
+cat $DATA_PATH/qm.ini
+
+```
 ### Maintenance 
 
 [Maintenance](https://mqfellow.io/maintenance) - cleanup docker images, containers and github credentials
