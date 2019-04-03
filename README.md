@@ -1,8 +1,9 @@
 ## Welcome to MQFellow Pages
 
-### Need help
+### QM Ini
 
-* Email mqfellow@mqfellow.io
+* ADOPTMCA ADOPTNEWMCA on QM.ini
+* http://www-01.ibm.com/support/docview.wss?uid=swg21080140
 
 ### Maintenance 
 
