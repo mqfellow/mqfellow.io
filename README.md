@@ -12,8 +12,55 @@ echo '  OCSPCheckExtensions=NO' >> $DATA_PATH/qm.ini
 echo '  OCSPAuthentication=OPTIONAL' >> $DATA_PATH/qm.ini
 
 cat $DATA_PATH/qm.ini
+```
 
 ```
+Copy of qm.ini in AWS
+
+Log:
+   LogPrimaryFiles=6
+   LogSecondaryFiles=4
+   LogFilePages=4096
+   LogType=CIRCULAR
+   LogBufferPages=32
+   LogPath=/var/mqm/log/QMGRNAME/
+   LogWriteIntegrity=TripleWrite
+Service:
+   Name=AuthorizationService
+   EntryPoints=14
+ServiceComponent:
+   Service=AuthorizationService
+   Name=MQSeries.UNIX.auth.service
+   Module=amqzfu
+   ComponentDataSize=0
+TCP:
+   SndBuffSize=0
+   RcvBuffSize=0
+   RcvSndBuffSize=0
+   RcvRcvBuffSize=0
+   ClntSndBuffSize=0
+   ClntRcvBuffSize=0
+   SvrSndBuffSize=0
+   SvrRcvBuffSize=0
+   KeepAlive=YES <-----
+SSL:
+  CDPCheckExtensions=NO
+  OCSPCheckExtensions=NO
+  OCSPAuthentication=OPTIONAL
+ApiExitLocal:
+   Name=MQAuditor
+   Sequence=1
+   Function=EntryPoint
+   Module=mqa
+   Data=QMGRNAME-mqa.ini
+CHANNELS: <-----
+   AdoptNewMCA=all
+   AdoptNewMCATimeout=5
+   AdoptNewMCACheck=all
+   MaxChannels=700
+   MaxActiveChannels=600
+```
+
 ### Maintenance 
 
 [Maintenance](https://mqfellow.io/maintenance) - cleanup docker images, containers and github credentials
