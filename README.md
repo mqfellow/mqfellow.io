@@ -113,5 +113,58 @@ $ sh mq-delete.sh
 
 * [Cluster](https://mqfellow.io/cluster) - MQ Cluster Setup - Full/Partial Repository
 
+### Loopback Check Logic
 
+```
+Loopback Check
+
+DEFINE QLOCAL('{MQ_QUEUE_MANAGER_NAME}.LOOPBACK') DISTL(NO) MAXDEPTH(5000) REPLACE
+DEFINE QREMOTE('{MQ_QUEUE_MANAGER_NAME}.LOOPBACK.RMT') RQMNAME('REMOTEQM') RNAME('{MQ_QUEUE_MANAGER_NAME}.LOOPBACK.RMT') XMITQ('REMOTEQM') REPLACE
+
+AMQ8629: Display service information details.
+   SERVICE(MQM.LOOPBACKSVC)                 CONTROL(QMGR)
+   SERVTYPE(SERVER)                     
+   STARTCMD(/var/mqm/scripts/mq-chls.sh)
+   STARTARG(&)                             STOPCMD(/usr/bin/pkill)
+   STOPARG(-f -9 /var/mqm/scripts/mq-chls.sh)
+   STDOUT(/var/mqm/scripts/mqboot.+QMNAME+)
+   STDERR(/var/mqm/scripts/mqboot.+QMNAME+)
+   DESCR(Keep VENDOR channels up and running)
+   ALTDATE(2010-03-02)                     ALTTIME(09.03.49)
+
+---------
+
+#!/usr/bin/sh
+# -----------------------------------------------------------------------------
+# Keep VENDOR channels up and running
+#
+# -----------------------------------------------------------------------------
+_PROG=${0##*/}
+
+# Must run as mqm!
+[[ $(whoami) != "mqm" ]] && printf "$_PROG: FATAL: Script must be executed as the mqm user.\n" && exit 255
+printf "$_PROG: Begin processing at $(date)\n"
+
+while true
+do
+  _DATE=$(date "+%Y%m%d")
+  _LOG=/var/mqm/audit/$_DATE.${_PROG/.sh/}.log
+  # Get the QMgr name for this host
+  QMNAME=$(dspmq | tr ')' '\n' | grep 'QMNAME(' | cut -d '(' -f 2)
+  PREFIX_ENV=P # VENDOR SDLC P=Prod, V=QA
+  [[ ${QMNAME:0:1} != "P" ]] && PREFIX_ENV=V
+  date  >>$_LOG 2>&1
+  printf "Hello world from $QMNAME to ${PREFIX_ENV}H0Q at $(date)" | /opt/mqm/samp/bin/amqsput $QMNAME.LOOPBACK.${PREFIX_ENV}H0Q.RMT $QMNAME >>$_LOG 2>&1
+  printf "Hello world from $QMNAME to ${PREFIX_ENV}H1Q at $(date)" | /opt/mqm/samp/bin/amqsput $QMNAME.LOOPBACK.${PREFIX_ENV}H1Q.RMT $QMNAME >>$_LOG 2>&1
+  if [ "$PREFIX_ENV" = "P" ]; then
+    printf "Hello world from $QMNAME to ${PREFIX_ENV}H2Q at $(date)" | /opt/mqm/samp/bin/amqsput $QMNAME.LOOPBACK.${PREFIX_ENV}H2Q.RMT $QMNAME >>$_LOG 2>&1
+    printf "Hello world from $QMNAME to ${PREFIX_ENV}H3Q at $(date)" | /opt/mqm/samp/bin/amqsput $QMNAME.LOOPBACK.${PREFIX_ENV}H3Q.RMT $QMNAME >>$_LOG 2>&1
+  fi
+  /opt/mqm/samp/bin/amqsget $QMNAME.LOOPBACK $QMNAME  >>$_LOG 2>&1
+  printf  "\n\n" >>$_LOG 2>&1
+  sleep 500
+done
+
+
+```
 
